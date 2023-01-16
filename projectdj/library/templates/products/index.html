@@ -1,0 +1,48 @@
+{% extends "base.html "%}
+
+{% block title %} Products list {% endblock %}
+
+{% block content %} 
+
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'create' %}" role="button">Add new product</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Products</h4>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product name</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for product in products %}
+
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.product_name }}</td>
+                            <td>
+                                <img src="{{ product.image.url }}" height="150" width="170">
+                            </td>
+                            <td>{{ product.price }}</td>
+                            <td><a name="" id="" class="btn btn-info" href="{% url 'edit' product.id %}" role="button">Edit</a> | 
+                                <a name="" id="" class="btn btn-danger" href="{% url 'delete' product.id %}" role="button">Delete</a> </td>
+                        </tr>
+
+                        {% endfor%}
+                        
+                    </tbody>
+                </table>
+            </div>   
+        </div>
+    </div>
+
+{% endblock %}
